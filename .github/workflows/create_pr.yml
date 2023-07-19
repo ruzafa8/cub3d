@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create Pull Request
-          uses: peter-evans/create-pull-request@v5
-          with:
-            token: ${{ secrets.GH_TOKEN }}
-            commit-message: Default commit message
-            title: [PR] - CUB3D - default title
-            body: Esta Pull Request fue creada automáticamente por Glask 🤖 
-            branch: ${{ github.ref }} # The branch where you commit
-            base: master # Don't forget to specify the right base branch here
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          commit-message: Default commit message
+          title: [PR] - CUB3D - default title
+          body: Esta Pull Request fue creada automáticamente por Glask 🤖 
+          branch: ${{ github.ref }} # The branch where you commit
+          base: master # Don't forget to specify the right base branch here
