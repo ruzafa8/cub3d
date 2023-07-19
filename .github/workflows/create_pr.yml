@@ -13,8 +13,8 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GH_TOKEN }}
-          commit-message: Default commit message
+          commit-message: "Default commit message"
           title: "[PR] - Cub3D - ${{ github.ref }}"
-          body: Esta Pull Request fue creada automáticamente por Glask 🤖 
+          body: "Esta Pull Request fue creada automáticamente por Glask 🤖"
           branch: ${{ github.ref }} # The branch where you commit
-          base: master # Don't forget to specify the right base branch here
+          base: master # Don't forget to specify the right base branch hereç
