@@ -1,4 +1,3 @@
-name: Create Pull Request
 on:
   create:
     branches:
@@ -9,24 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create Pull Request
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const { repo, owner } = context.repo;
-            const result = await github.rest.pulls.create({
-              title: '[PR] - CUB3D - ${{ github.ref_name }}',
-              owner,
-              repo,
-              head: '${{ github.ref_name }}',
-              base: 'master',
-              body: [
-                'PR autogenerada por Glask 🤖',
-                ''
-              ].join('\n')
-            });
-            github.rest.issues.addLabels({
-              owner,
-              repo,
-              issue_number: result.data.number,
-              labels: ['feature', 'pr-auto']
-            });
+          uses: peter-evans/create-pull-request@v5
+          with:
+            token: ${{ secrets.GH_TOKEN }}
+            commit-message: Default commit message
+            title: [PR] - CUB3D - default title
+            body: Esta Pull Request fue creada automáticamente por Glask 🤖 
+            branch: ${{ github.ref }} # The branch where you commit
+            base: master # Don't forget to specify the right base branch here
