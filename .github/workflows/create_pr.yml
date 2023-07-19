@@ -1,0 +1,20 @@
+on:
+  create:
+    branches:
+      - '*'
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          commit-message: Default commit message
+          title: "[PR] - Cub3D - ${{ github.ref }}"
+          body: Esta Pull Request fue creada automáticamente por Glask 🤖 
+          branch: ${{ github.ref }} # The branch where you commit
+          base: master # Don't forget to specify the right base branch here
