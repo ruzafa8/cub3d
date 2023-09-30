@@ -18,7 +18,9 @@ CFLAGS   = -Wextra -Wall -Werror -Wunreachable-code -Ofast
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/
 
 # Source files
-SRC      = main.c
+SRC      = main.c\
+		   validator/validator_validate.c\
+		   validator/validator_print_errors.c
 SOURCES  := $(addprefix $(SRCDIR)/, $(SRC))
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
@@ -36,11 +38,12 @@ RESET    = \033[0m
 .PHONY: all
 all: libmlx libft $(BINDIR)/$(TARGET) title
 
-$(BINDIR)/$(TARGET): $(OBJECTS)
+$(BINDIR)/$(TARGET): $(OBJECTS) | $(BINDIR)
 	@$(CC) -g $(OBJECTS) $(LIBS) $(HEADERS) -o $@
 	@echo "Linking complete!"
 
-$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+$(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 	@echo "Compiled "$<" successfully!"
 
@@ -67,6 +70,12 @@ fclean: clean
 
 .PHONY: re
 re: clean all
+
+$(OBJDIR):
+	@mkdir -p $(OBJDIR)
+
+$(BINDIR):
+	@mkdir -p $(BINDIR)
 
 .PHONY: title
 title:
