@@ -19,8 +19,11 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/
 
 # Source files
 SRC      = main.c\
-		   validator/validator_validate.c\
-		   validator/validator_print_errors.c
+		   validator/validator_validate_args.c\
+		   validator/validator_print_errors.c\
+		   validator/validate_lines.c\
+		   parser/parser_parse.c\
+		   parser/parser_free_cub3d.c
 SOURCES  := $(addprefix $(SRCDIR)/, $(SRC))
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 

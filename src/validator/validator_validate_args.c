@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_args.c                                    :+:      :+:    :+:   */
+/*   validator_validate_args.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 16:12:04 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/09/30 16:49:24 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:33:35 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * The extension of the file must be ".cub"
+ */
 static int	validate_file_extension(char *filename)
 {
 	size_t	len;
@@ -26,12 +29,15 @@ static int	validate_file_extension(char *filename)
 	);
 }
 
+/**
+ * The program must receive only one argument: The name of the file to process.
+ */
 static int	validate_num_of_args(int argc)
 {
 	return (argc == 2);
 }
 
-t_error	validator_validate(int argc, char **argv)
+t_error	validator_validate_args(int argc, char **argv)
 {
 	if (!validate_num_of_args(argc))
 		return (NUM_ARGS_ERROR);

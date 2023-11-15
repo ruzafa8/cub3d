@@ -2,11 +2,12 @@
 
 int main(int argc, char **argv)
 {
-	t_error	error;
+	t_cub3d	*cub3d;
 
-	error = validator_validate(argc, argv);
-	if (error != NO_ERROR)
-		return (validator_print_errors(error), 1);
-	ft_printf("Valid arguments.\n");
+	cub3d = parser_parse(argc, argv);
+	if (cub3d == 0)
+		return (1);
+	ft_printf("NO: %s\nSO: %s\nWE: %s\nEA: %s",
+		cub3d->north_texture, cub3d->south_texture, cub3d->west_texture, cub3d->east_texture);
 	return (0);
 }
