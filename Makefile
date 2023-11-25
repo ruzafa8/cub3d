@@ -23,7 +23,9 @@ SRC      = main.c\
 		   validator/validator_print_errors.c\
 		   validator/validate_lines.c\
 		   parser/parser_parse.c\
-		   parser/parser_free_cub3d.c
+		   parser/parser_free_cub3d.c\
+		   parser/parser_map.c\
+		   utils/str_utils.c
 SOURCES  := $(addprefix $(SRCDIR)/, $(SRC))
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 

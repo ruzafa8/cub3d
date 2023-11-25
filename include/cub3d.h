@@ -21,10 +21,16 @@ typedef struct s_cub3d
 t_error	validator_validate_args(int argc, char **argv);
 void	validator_print_errors(t_error error);
 t_error	validate_textures_lines(int fd, t_cub3d *cub3d);
+void	parser_map(int fd);
 
 
 /*** PARSING FUNCTIONS ***/
 t_cub3d	*parser_parse(int argc, char **argv);
 void	parser_free_cub3d(t_cub3d **cub3d);
+
+
+/*** UTILS ***/
+char	*str_padd_spaces(char *str, size_t len);
+char	*str_remove_last(char *str);
 
 #endif
