@@ -10,7 +10,7 @@ LIBDIR   = lib
 # Libraries
 LIBMLX	:= ./$(LIBDIR)/MLX42
 LIBFT	:= ./$(LIBDIR)/libft
-LIBS	:= $(LIBMLX)/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a -L "/Users/aruzafa-/.brew/opt/glfw/lib/"
+LIBS	:= $(LIBMLX)/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a -L "$(HOME)/.brew/opt/glfw/lib/"
 
 # Compiling flags
 CC       = gcc
