@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_free_cub3d.c                                :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 20:15:52 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/11/29 20:55:30 by aruzafa-         ###   ########.fr       */
+/*   Created: 2023/11/29 20:51:27 by aruzafa-          #+#    #+#             */
+/*   Updated: 2023/11/29 21:18:22 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef MAP_H
+# define MAP_H
 
-void	parser_free_cub3d(t_cub3d **cub3d)
+typedef enum e_map
 {
-	if ((*cub3d)->north_texture)
-		free((*cub3d)->north_texture);
-	if ((*cub3d)->south_texture)
-		free((*cub3d)->south_texture);
-	if ((*cub3d)->west_texture)
-		free((*cub3d)->west_texture);
-	if ((*cub3d)->east_texture)
-		free((*cub3d)->east_texture);
-	if ((*cub3d)->map)
-		free((*cub3d)->map);
-	free(*cub3d);
-}
+	FLOOR,
+	WALL,
+	VOID
+}	t_map;
+
+#endif
