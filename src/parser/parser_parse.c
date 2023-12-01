@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 17:14:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/11/29 21:29:19 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/01 17:57:24 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static t_cub3d	*parse_fd(int fd, t_error *error)
 	cub3d = (t_cub3d *) ft_calloc(1, sizeof(t_cub3d));
 	*error = validate_textures_lines(fd, cub3d);
 	// TODO: Validate empty line...
+	ft_get_next_line(fd);
+	*error = validate_colors(fd, cub3d);
 	ft_get_next_line(fd);
 	cub3d->map = parser_map(fd);
 	if (*error == NO_ERROR)

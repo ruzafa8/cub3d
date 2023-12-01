@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/11/29 21:21:04 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/01 17:57:15 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_cub3d
 	char	*south_texture;
 	char	*west_texture;
 	char	*east_texture;
+	int		floor_color;
+	int		ceil_color;
 	t_map	**map;
 }	t_cub3d;
 
@@ -35,6 +37,7 @@ typedef struct s_cub3d
 t_error	validator_validate_args(int argc, char **argv);
 void	validator_print_errors(t_error error);
 t_error	validate_textures_lines(int fd, t_cub3d *cub3d);
+t_error	validate_colors(int fd, t_cub3d *cub3d);
 t_map	**parser_map(int fd);
 
 
