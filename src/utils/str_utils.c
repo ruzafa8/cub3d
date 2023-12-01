@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:59:44 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/11/25 19:26:34 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/11/29 21:07:07 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*str_padd_spaces(char *str, size_t len)
 
 	str_len = ft_strlen(str);
 	res = (char *) ft_calloc(len + 1, sizeof(char));
-	ft_memchr(res, (int) ' ', len);
+	ft_memset((void *) res, (int) ' ', len);
 	index = 0;
 	while (index < str_len && index < len)
 	{

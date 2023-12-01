@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 20:15:52 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/11/15 20:27:48 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:55:30 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ void	parser_free_cub3d(t_cub3d **cub3d)
 		free((*cub3d)->west_texture);
 	if ((*cub3d)->east_texture)
 		free((*cub3d)->east_texture);
+	if ((*cub3d)->map)
+		free((*cub3d)->map);
 	free(*cub3d);
 }
