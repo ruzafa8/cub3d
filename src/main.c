@@ -6,7 +6,7 @@
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:59:15 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/01 19:10:07 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/01 19:56:38 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,25 @@
 
 int main(int argc, char **argv)
 {
-	t_cub3d	*cub3d;
+	t_data *data;
 
-	cub3d = parser_parse(argc, argv);
-	if (cub3d == 0)
+	data = ft_calloc(1, sizeof(t_data));
+	if (!data)
+		return (ft_putendl_fd(MALLOC_ERR, STDERR_FILENO), EXIT_FAILURE);
+
+	data->cub3d = parser_parse(argc, argv);
+	if (data->cub3d == 0)
 		return (1);
+	
+	data->mlx = mlx_init(640, 480, "cub3D", true);
+	if(!(data->mlx))
+	{
+		ft_putendl_fd(MALLOC_ERR, STDERR_FILENO);
+		//TODO: liberar todo ->free_and_exit(data, EXIT_FAILURE);
+	}
+	init_sprite(data);
+	paint_ceil_floor(data);
+	mlx_loop(data->mlx);
+	
 	return (0);
 }

@@ -19,6 +19,7 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/
 
 # Source files
 SRC      = main.c\
+		   init_data.c\
 		   validator/validator_validate_args.c\
 		   validator/validator_print_errors.c\
 		   validator/validate_lines.c\
@@ -26,7 +27,9 @@ SRC      = main.c\
 		   parser/parser_parse.c\
 		   parser/parser_free_cub3d.c\
 		   parser/parser_map.c\
-		   utils/str_utils.c
+		   utils/str_utils.c\
+		   render/texture.c\
+
 SOURCES  := $(addprefix $(SRCDIR)/, $(SRC))
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 

@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.h                                           :+:      :+:    :+:   */
+/*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 20:48:31 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/01 17:41:31 by atrujill         ###   ########.fr       */
+/*   Created: 2023/12/01 20:00:03 by atrujill          #+#    #+#             */
+/*   Updated: 2023/12/01 20:00:04 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERRORS_H
-# define ERRORS_H
+#include "cub3d.h"
 
-/*** PRINT MENSSAGES ***/
-# define MALLOC_ERR "Error\nMemory was not allocated"
-# define LOAD_ERR "Error\nUnable to load resource"
-
-typedef enum e_error
+void	paint_ceil_floor(t_data *data)
 {
-	NO_ERROR,
-	FILE_EXTENSION_ERROR,
-	NUM_ARGS_ERROR,
-	FILE_OPEN_ERROR,
-	MEMORY_ERROR,
-	PARSER_ERROR,
-}	t_error;
+	int	x;
+	int	y;
 
-#endif
+	y = -1;
+	while (++y < 480)
+	{
+		x = -1;
+		while (++x < 640)
+		{
+			if (y < 480 / 2)
+				mlx_put_pixel(data->bg_img, x, y, data->cub3d->ceil_color);
+			else
+				mlx_put_pixel(data->bg_img, x, y, data->cub3d->floor_color);
+		}
+	}
+}

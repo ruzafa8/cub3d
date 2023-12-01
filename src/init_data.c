@@ -6,7 +6,7 @@
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 19:01:13 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/01 19:03:19 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/01 19:56:46 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void init_sprite(t_data *data)
 {
-    	data->game_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+    data->game_img = mlx_new_image(data->mlx, 640, 480);
 	if (!data->game_img)
 	{
 		ft_putendl_fd(LOAD_ERR, STDERR_FILENO);
 		//TODO: liberar todo ->free_and_exit(data, EXIT_FAILURE);
 	}
-	data->bg_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->bg_img = mlx_new_image(data->mlx, 640, 480);
 	if (!data->bg_img)
 	{
 		ft_putendl_fd(LOAD_ERR, STDERR_FILENO);
