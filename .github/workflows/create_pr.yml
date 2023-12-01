@@ -1,5 +1,5 @@
 on:
-  create:
+  push:
     branches:
       - '*'
 
@@ -9,12 +9,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Get existing pull requests
+        id: get_prs
+        run: |
+          PR_EXIST=$(curl -s -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
+               -X GET "https://api.github.com/repos/${{ github.repository }}/pulls?state=open" \
+               | jq --arg head_ref "${{ github.ref }}" '.[] | select(.head.ref == $head_ref and .base.ref == "master")')
+          if [ -n "$PR_EXIST" ]; then
+            echo "::set-output name=pr_exists::true"
+          else
+            echo "::set-output name=pr_exists::false"
+          fi
+
       - name: Create Pull Request
+        if: steps.get_prs.outputs.pr_exists != 'true'
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GH_TOKEN }}
           commit-message: "Default commit message"
           title: "[PR] - Cub3D - ${{ github.head_ref || github.ref_name }}"
           body: "Esta Pull Request fue creada automáticamente por Glask 🤖"
-          branch: ${{ github.ref }} # The branch where you commit
-          base: master # Don't forget to specify the right base branch hereç
+          branch: ${{ github.ref }}
+          base: master
