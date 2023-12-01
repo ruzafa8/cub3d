@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/01 17:57:15 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/01 19:51:41 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@ t_error	validator_validate_args(int argc, char **argv);
 void	validator_print_errors(t_error error);
 t_error	validate_textures_lines(int fd, t_cub3d *cub3d);
 t_error	validate_colors(int fd, t_cub3d *cub3d);
-t_map	**parser_map(int fd);
 
 
 /*** PARSING FUNCTIONS ***/
 t_cub3d	*parser_parse(int argc, char **argv);
 void	parser_free_cub3d(t_cub3d **cub3d);
+t_map	**parser_map(int fd);
+void	parse_property(char *line);
 
 
 /*** STRING UTILS ***/

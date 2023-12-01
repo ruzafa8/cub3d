@@ -26,6 +26,7 @@ SRC      = main.c\
 		   parser/parser_parse.c\
 		   parser/parser_free_cub3d.c\
 		   parser/parser_map.c\
+		   parser/parse_property.c\
 		   utils/str_utils.c
 SOURCES  := $(addprefix $(SRCDIR)/, $(SRC))
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)

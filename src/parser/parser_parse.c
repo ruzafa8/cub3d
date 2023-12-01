@@ -6,23 +6,30 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 17:14:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/01 17:57:24 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/01 19:53:21 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
 
 static t_cub3d	*parse_fd(int fd, t_error *error)
 {
 	t_cub3d	*cub3d;
 
 	cub3d = (t_cub3d *) ft_calloc(1, sizeof(t_cub3d));
-	*error = validate_textures_lines(fd, cub3d);
-	// TODO: Validate empty line...
-	ft_get_next_line(fd);
-	*error = validate_colors(fd, cub3d);
-	ft_get_next_line(fd);
-	cub3d->map = parser_map(fd);
+	// *error = validate_textures_lines(fd, cub3d);
+	// ft_get_next_line(fd);
+	// *error = validate_colors(fd, cub3d);
+	// ft_get_next_line(fd);
+	// cub3d->map = parser_map(fd);
+	*error = NO_ERROR;
+	char *line = ft_get_next_line(fd);
+	while (line)
+	{
+		parse_property(line);
+		line = ft_get_next_line(fd);
+	}
 	if (*error == NO_ERROR)
 		return (cub3d);
 	parser_free_cub3d(&cub3d);
