@@ -9,6 +9,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Get token
+        id: get_token
+        uses: machine-learning-apps/actions-app-token@master
+        with:
+          APP_PEM: ${{ secrets.APP_PRIVATE_KEY }}
+          APP_ID: ${{ secrets.APP_ID }}
       - name: Get existing pull requests
         id: get_prs
         run: |
@@ -25,7 +31,7 @@ jobs:
         if: steps.get_prs.outputs.pr_exists != 'true'
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ steps.get_token.outputs.app_token }}
           commit-message: "Default commit message"
           title: "[PR] - Cub3D - ${{ github.head_ref || github.ref_name }}"
           body: "Esta Pull Request fue creada automáticamente por Glask 🤖"
