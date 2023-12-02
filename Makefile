@@ -10,7 +10,7 @@ LIBDIR   = lib
 # Libraries
 LIBMLX	:= ./$(LIBDIR)/MLX42
 LIBFT	:= ./$(LIBDIR)/libft
-LIBS	:= $(LIBMLX)/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a -L "/Users/aruzafa-/.brew/opt/glfw/lib/"
+LIBS	:= $(LIBMLX)/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a -L "$(HOME)/.brew/opt/glfw/lib/"
 
 # Compiling flags
 CC       = gcc
@@ -19,6 +19,7 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/
 
 # Source files
 SRC      = main.c\
+		   init_data.c\
 		   validator/validator_validate_args.c\
 		   validator/validator_print_errors.c\
 		   validator/validate_lines.c\
@@ -27,7 +28,9 @@ SRC      = main.c\
 		   parser/parser_free_cub3d.c\
 		   parser/parser_map.c\
 		   parser/parse_property.c\
-		   utils/str_utils.c
+		   utils/str_utils.c\
+		   render/texture.c\
+
 SOURCES  := $(addprefix $(SRCDIR)/, $(SRC))
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 

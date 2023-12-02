@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 19:25:16 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/01 20:48:24 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/02 14:20:07 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static size_t	skip_spaces_from(char *str, size_t index)
 			return (i);
 		i++;
 	}
-	return (0);	
+	return (0);
 }
 
 void	parse_property(char *line)
@@ -56,7 +56,7 @@ void	parse_property(char *line)
 	trimmed = ft_strtrim(line, "\t\n\v\f\r ");
 	index = find_next_space(line);
 	identifier = ft_substr(line, 0, index);
-	index = skip_spaces_from(line, index); // skip spaces
+	index = skip_spaces_from(line, index);
 	value = ft_substr(line, index, -1);
 	ft_printf("%s->%s", identifier, value);
 }

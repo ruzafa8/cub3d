@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/12/01 19:51:41 by aruzafa-         ###   ########.fr       */
+=======
+/*   Updated: 2023/12/01 19:50:03 by atrujill         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +23,7 @@
 # include <string.h>
 # include "errors.h"
 # include "map.h"
+# include "MLX42/MLX42.h"
 
 # define BUFFER_SIZE 1024
 
@@ -32,6 +37,15 @@ typedef struct s_cub3d
 	int		ceil_color;
 	t_map	**map;
 }	t_cub3d;
+
+typedef struct s_data
+{
+	t_cub3d	*cub3d;
+	mlx_t *mlx;
+	mlx_image_t		*game_img;
+	mlx_image_t		*bg_img;
+	
+} t_data;
 
 /*** VALIDATION FUNCTIONS ***/
 t_error	validator_validate_args(int argc, char **argv);
@@ -50,5 +64,9 @@ void	parse_property(char *line);
 /*** STRING UTILS ***/
 char	*str_padd_spaces(char *str, size_t len);
 char	*str_remove_last(char *str);
+
+/*** RENDER ***/
+void	init_sprite(t_data *data);
+void	paint_ceil_floor(t_data *data);
 
 #endif
