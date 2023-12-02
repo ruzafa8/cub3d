@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 16:37:03 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/01 17:56:33 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/02 17:52:50 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int32_t	rgb_to_int_color(int32_t r, int32_t g, int32_t b)
 {
-	return (r << 16 | g << 8 | b);
+	return (r << 24 | g << 16 | b << 8 | 0xff);
 }
 
 t_error	validate_floor_color(char *line, t_cub3d *cub3d)
