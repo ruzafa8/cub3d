@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_colors.c                                  :+:      :+:    :+:   */
+/*   validate_is_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 16:37:03 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/02 17:09:07 by aruzafa-         ###   ########.fr       */
+/*   Created: 2023/12/02 15:51:05 by aruzafa-          #+#    #+#             */
+/*   Updated: 2023/12/02 17:12:53 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	rgb_to_int_color(int r, int g, int b)
+int	validate_is_map(char *line)
 {
-	return (r << 16 | g << 8 | b);
-}
+	size_t i;
 
-int validate_colors(char *rgb, t_error *error)
-{
-	char	**numbers;
-
-	numbers = ft_split(rgb, ',');
-	if (!numbers)
-	{
-		*error = MEMORY_ERROR;
+	if (!line || !line[0])
 		return (0);
+	i = 0;
+	while (line[i])
+	{
+		if (!ft_strchr(" 01NSEW", line[i]))
+			return (0);
+		i++;
 	}
-	// TODO: Validar errores de los números (rango, más números de lo normal, menos, ...)
-	*error = NO_ERROR;
-	return (rgb_to_int_color(ft_atoi(numbers[0]),
-			ft_atoi(numbers[1]), ft_atoi(numbers[2])));
+	return (1);
 }

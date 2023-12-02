@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:31 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/01 17:41:31 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:10:01 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef enum e_error
 	NUM_ARGS_ERROR,
 	FILE_OPEN_ERROR,
 	MEMORY_ERROR,
-	PARSER_ERROR,
+	IDENTIFIER_ERROR,
 }	t_error;
 
 #endif
