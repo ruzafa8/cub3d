@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 16:46:14 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/02 15:46:17 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/03 16:32:51 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,8 @@ void	validator_print_errors(t_error error)
 		ft_printf("Error\nCould not open file: %s\n", strerror(errno));
 	else if (error == MEMORY_ERROR)
 		ft_printf("Error\nCould not allocate memory\n");
+	else if (error == NO_PLAYER)
+		ft_printf(NO_PLAYER_ERR);
+	else if (error == TOO_MUCH_PLAYERS)
+		ft_printf(TOO_MUCH_PLAYERS_ERR);
 }

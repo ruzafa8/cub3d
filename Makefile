@@ -28,6 +28,7 @@ SRC      = main.c\
 		   parser/parser_free_cub3d.c\
 		   parser/parser_map.c\
 		   parser/parse_property.c\
+		   parser/parse_read_map_fd.c\
 		   utils/str_utils.c\
 		   utils/str_spaces.c\
 		   render/texture.c\
