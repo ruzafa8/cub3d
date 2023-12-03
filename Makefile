@@ -22,12 +22,14 @@ SRC      = main.c\
 		   init_data.c\
 		   validator/validator_validate_args.c\
 		   validator/validator_print_errors.c\
-		   validator/validate_lines.c\
+		   validator/validate_is_map.c\
 		   validator/validate_colors.c\
 		   parser/parser_parse.c\
 		   parser/parser_free_cub3d.c\
 		   parser/parser_map.c\
+		   parser/parse_property.c\
 		   utils/str_utils.c\
+		   utils/str_spaces.c\
 		   render/texture.c\
 
 SOURCES  := $(addprefix $(SRCDIR)/, $(SRC))
