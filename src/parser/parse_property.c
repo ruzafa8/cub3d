@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 19:25:16 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 18:18:34 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:16:53 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ static t_error	add_to_cub3d(char *id, char *value, t_cub3d *cub3d)
 	else if (ft_strncmp(id, "C", 1) == 0)
 		error = validate_colors(value, &cub3d->ceil_color);
 	else
+	{
+		ft_printf("QUIEN SOY?%s.\n", id);
 		error = IDENTIFIER_ERROR;
+	}
 	return (error);
 }
 

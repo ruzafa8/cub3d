@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:31 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 18:03:53 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:25:03 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define RGB_TOO_LONG_ERR "Error\nRGB value is so_long"
 # define RGB_NAN_ERR "ERROR\nRGB value is not a number"
 # define RGB_NUM_PARAMS_ERR "ERROR\nRGB number of params error"
+# define BORDER_ERROR_ERR "ERROR\nMap not surrounded by walls"
 
 typedef enum e_error
 {
@@ -37,6 +38,7 @@ typedef enum e_error
 	RGB_TOO_LONG,
 	RGB_NAN,
 	RGB_NUM_PARAMS,
+	BORDER_ERROR
 }	t_error;
 
 #endif
