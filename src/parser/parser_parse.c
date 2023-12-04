@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 17:14:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 12:00:48 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:07:02 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static t_cub3d	*parse_fd(int fd, t_error *error)
 		*error = parse_property(line, cub3d);
 		line = spaces_trim(ft_get_next_line(fd));
 	}
-	*error = parser_map(fd, cub3d);
+	if (*error == NO_ERROR)
+		*error = parser_map(fd, cub3d);
 	if (*error == NO_ERROR)
 		return (cub3d);
 	parser_free_cub3d(&cub3d);

@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 11:54:13 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:57:42 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_data
 /*** VALIDATION FUNCTIONS ***/
 t_error	validator_validate_args(int argc, char **argv);
 void	validator_print_errors(t_error error);
-int		validate_colors(char *rgb, t_error *error);
+t_error	validate_colors(char *rgb, int *number);
 int		validate_is_map(t_list *map);
 int		validate_line_is_map(char *line);
 t_error	validate_player(t_list *map, t_cub3d *cub3d);

@@ -6,12 +6,11 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 19:25:16 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/02 17:15:37 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:18:34 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 static t_error	add_to_cub3d(char *id, char *value, t_cub3d *cub3d)
 {
@@ -27,9 +26,9 @@ static t_error	add_to_cub3d(char *id, char *value, t_cub3d *cub3d)
 	else if (ft_strncmp(id, "WE", 2) == 0)
 		cub3d->west_texture = ft_strdup(value);
 	else if (ft_strncmp(id, "F", 1) == 0)
-		cub3d->floor_color = validate_colors(value, &error);
+		error = validate_colors(value, &cub3d->floor_color);
 	else if (ft_strncmp(id, "C", 1) == 0)
-		cub3d->ceil_color = validate_colors(value, &error);
+		error = validate_colors(value, &cub3d->ceil_color);
 	else
 		error = IDENTIFIER_ERROR;
 	return (error);
