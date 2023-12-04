@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 16:37:03 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 16:20:34 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:23:20 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ static int	validate_number(char *number)
 	return (1);
 }
 
+static size_t	count_num_strings(char **strs)
+{
+	size_t	num;
+
+	num = 0;
+	while (*strs)
+	{
+		num++;
+		strs++;
+	}
+	return (num);
+}
+
 static int	valid_range(int number)
 {
 	return (0 <= number && number <= 255);
@@ -57,6 +70,11 @@ int	validate_colors(char *rgb, t_error *error)
 	if (!numbers)
 	{
 		*error = MEMORY_ERROR;
+		return (0);
+	}
+	if (count_num_strings(numbers) != 3)
+	{
+		*error = INVALID_RGB_COLOR;
 		return (0);
 	}
 	if (!validate_number(numbers[0]) || !validate_number(numbers[1])
