@@ -6,11 +6,35 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 16:37:03 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 16:03:45 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:20:34 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/**
+ * This function validates that the string received is number between 0 and 255.
+ * 
+ * Firstable, we validate len (must not be bigger than 3). That way we avoid
+ * overflows.
+ * 
+ * Then we validate each char of the string is a number.
+ */
+static int	validate_number(char *number)
+{
+	int	i;
+
+	if (ft_strlen(number) > 3)
+		return (0);
+	i = 0;
+	while (number[i])
+	{
+		if (!ft_isdigit((int) number[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 static int	valid_range(int number)
 {
@@ -35,13 +59,19 @@ int	validate_colors(char *rgb, t_error *error)
 		*error = MEMORY_ERROR;
 		return (0);
 	}
+	if (!validate_number(numbers[0]) || !validate_number(numbers[1])
+		|| !validate_number(numbers[2]))
+	{
+		*error = INVALID_RGB_COLOR;
+		return (0);
+	}
 	r_number = ft_atoi(numbers[0]);
 	g_number = ft_atoi(numbers[1]);
 	b_number = ft_atoi(numbers[2]);
 	if (!valid_range(r_number) || !valid_range(g_number)
 		|| !valid_range(b_number))
 	{
-		*error = INVALID_RANGE_COLOR;
+		*error = INVALID_RGB_COLOR;
 		return (0);
 	}
 	*error = NO_ERROR;
