@@ -24,6 +24,7 @@ SRC      = main.c\
 		   validator/validator_print_errors.c\
 		   validator/validate_is_map.c\
 		   validator/validate_colors.c\
+		   validator/validate_player.c\
 		   parser/parser_parse.c\
 		   parser/parser_free_cub3d.c\
 		   parser/parser_map.c\
