@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:26:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 20:46:09 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:49:28 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ t_error	parser_map(int fd, t_cub3d *cub3d)
 		aux = aux->next;
 		i++;
 	}
+	if (!validate_border(cub3d->map, cub3d->height, cub3d->width))
+		return (BORDER_ERROR);
 	return (error);
 }

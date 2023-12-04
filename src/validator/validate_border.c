@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:49:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 20:37:21 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:49:50 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ int	validate_border(t_map **map, size_t max_x, size_t max_y)
 		while (j < max_y)
 		{
 			if (map[i][j] == FLOOR && any_neightbour_void(map, i, j, max_y))
-			{
-				ft_printf("PILLADO:(%d, %d)", i, j);
 				return (0);
-			}
 			j++;
 		}
 		i++;
