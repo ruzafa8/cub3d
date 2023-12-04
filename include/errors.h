@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:31 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 12:02:46 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:55:56 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define NO_PLAYER_ERR "Error\nMap has got no player"
 # define TOO_MUCH_PLAYERS_ERR "Error\nMap has got too much players"
 # define UNKNOWN_CHARACTER_MAP_ERR "Error\nMap has got an unknown character"
+# define INVALID_RANGE_COLOR_ERR "Error\nRGB number out of range"
 
 typedef enum e_error
 {
@@ -30,7 +31,8 @@ typedef enum e_error
 	IDENTIFIER_ERROR,
 	NO_PLAYER,
 	TOO_MUCH_PLAYERS,
-	UNKNOWN_CHARACTER_MAP
+	UNKNOWN_CHARACTER_MAP,
+	INVALID_RANGE_COLOR,
 }	t_error;
 
 #endif

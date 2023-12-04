@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 16:46:14 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 12:15:37 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:04:39 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ void	validator_print_errors(t_error error)
 		ft_printf(TOO_MUCH_PLAYERS_ERR);
 	else if (error == UNKNOWN_CHARACTER_MAP)
 		ft_printf(UNKNOWN_CHARACTER_MAP_ERR);
+	else if (error == INVALID_RANGE_COLOR)
+		ft_printf(INVALID_RANGE_COLOR_ERR);
 }
