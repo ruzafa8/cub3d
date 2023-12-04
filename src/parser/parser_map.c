@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:26:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/11/29 21:28:43 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:09:47 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,85 +15,53 @@
 static t_map	char_to_map(char c)
 {
 	if (c == ' ')
-		return VOID;
+		return (VOID);
 	if (c == '0')
-		return FLOOR;
+		return (FLOOR);
 	if (c == '1')
-		return WALL;
-	return VOID;
+		return (WALL);
+	return (VOID);
 }
 
-static t_map	*char_array_to_map_array(char *c, size_t len)
+static t_map	*char_array_to_map_array(char *c)
 {
 	t_map	*res;
+	size_t	len;
 
+	len = ft_strlen(c);
 	res = (t_map *) ft_calloc(len, sizeof(t_map));
 	while (len--)
 		res[len] = char_to_map(c[len]);
 	return (res);
 }
 
-static size_t	get_max_len(t_list *map)
+/**
+ * TODO: Validation.
+ * TODO: Valgrind.
+ */
+t_error	parser_map(int fd, t_cub3d *cub3d)
 {
-	size_t	max;
-	size_t	len;
-
-	max = 0;
-	len = 0;
-	while (map)
-	{
-		len = ft_strlen((char *) map->content);
-		if (len > max)
-			max = len;
-		map = map->next;
-	}
-	return (max);
-}
-
-static t_list	*read_map_from_fd(int fd)
-{
-	t_list	*l;
-	char	*line;
-
-	line = ft_get_next_line(fd);
-	l = 0;
-	while (line)
-	{
-		ft_lstadd_back(&l, ft_lstnew(str_remove_last(line)));
-		free(line);
-		line = ft_get_next_line(fd);
-	}
-	return (l);
-}
-
-t_map	**parser_map(int fd)
-{
+	t_error	error;
 	t_list	*map;
 	t_list	*aux;
-	size_t	max_len;
-	char	*str;
-	t_map	**final_map_res;
+	size_t	i;
 
-	map = read_map_from_fd(fd);
+	map = parse_read_map_fd(fd);
+	if (!validate_is_map(map))
+		return (UNKNOWN_CHARACTER_MAP);
+	error = validate_player(map, cub3d);
+	if (error != NO_ERROR)
+		return (error);
+	cub3d->map = (t_map **) ft_calloc(ft_lstsize(map), sizeof(t_map *));
+	if (!cub3d->map)
+		return (MEMORY_ERROR);
+	i = 0;
 	aux = map;
-	max_len = get_max_len(map);
 	while (aux)
 	{
-		str = str_padd_spaces((char *) aux->content, max_len);
-		aux = aux->next;
-	}
-	// TODO: Validate chars
-	aux = map;
-	size_t lst_size = ft_lstsize(aux);
-	final_map_res = (t_map **) ft_calloc(lst_size, sizeof(t_map *));
-	size_t	i;
-	i = 0;
-	while (i < lst_size)
-	{
-		final_map_res[i] = char_array_to_map_array(aux->content, max_len);
+		cub3d->map[i] = char_array_to_map_array(aux->content);
 		aux = aux->next;
 		i++;
 	}
-	// TODO: Valgrind...
-	return (final_map_res);
+	return (error);
 }

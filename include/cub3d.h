@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/02 17:17:21 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 11:54:13 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,22 @@
 
 # define BUFFER_SIZE 1024
 
+typedef struct s_player
+{
+	float	x;
+	float	y;
+}	t_player;
+
 typedef struct s_cub3d
 {
-	char	*north_texture;
-	char	*south_texture;
-	char	*west_texture;
-	char	*east_texture;
-	int		floor_color;
-	int		ceil_color;
-	t_map	**map;
+	char		*north_texture;
+	char		*south_texture;
+	char		*west_texture;
+	char		*east_texture;
+	int			floor_color;
+	int			ceil_color;
+	t_map		**map;
+	t_player	*player;
 }	t_cub3d;
 
 typedef struct s_data
@@ -46,15 +53,16 @@ typedef struct s_data
 t_error	validator_validate_args(int argc, char **argv);
 void	validator_print_errors(t_error error);
 int		validate_colors(char *rgb, t_error *error);
-int		validate_is_map(char *line);
-
+int		validate_is_map(t_list *map);
+int		validate_line_is_map(char *line);
+t_error	validate_player(t_list *map, t_cub3d *cub3d);
 
 /*** PARSING FUNCTIONS ***/
 t_cub3d	*parser_parse(int argc, char **argv);
 void	parser_free_cub3d(t_cub3d **cub3d);
-t_map	**parser_map(int fd);
+t_error	parser_map(int fd, t_cub3d *cub3d);
 t_error	parse_property(char *line, t_cub3d *cub3d);
-
+t_list	*parse_read_map_fd(int fd);
 
 /*** STRING UTILS ***/
 char	*str_padd_spaces(char *str, size_t len);
