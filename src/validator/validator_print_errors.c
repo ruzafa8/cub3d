@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 16:46:14 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 12:33:35 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:09:13 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,8 @@ void	validator_print_errors(t_error error)
 		ft_printf(NOT_A_PROPERTY_ERR);
 	else if (error == TOO_MUCH_PROPERTIES)
 		ft_printf(TOO_MUCH_PROPERTIES_ERR);
+	else if (error == REPEATED_IDENTIFIER)
+		ft_printf(REPEATED_IDENTIFIER_ERR);
+	else if (error == IDENTIFIER_ERROR)
+		ft_printf(IDENTIFIER_ERROR_ERR);
 }
