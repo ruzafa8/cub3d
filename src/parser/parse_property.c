@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 19:25:16 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 16:49:38 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:55:33 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ static t_error	add_to_cub3d(char *id, char *value, t_cub3d *cub3d)
 	else if (ft_strncmp(id, "WE", 2) == 0)
 		return (set_once_or_error(&cub3d->west_texture, value));
 	else if (ft_strncmp(id, "F", 1) == 0)
-		return (set_number_or_error(value, cub3d->floor_color));
+		return (set_number_or_error(value, &cub3d->floor_color));
 	else if (ft_strncmp(id, "C", 1) == 0)
-		return (set_number_or_error(value, cub3d->ceil_color));
+		return (set_number_or_error(value, &cub3d->ceil_color));
 	return (IDENTIFIER_ERROR);
 }
 
