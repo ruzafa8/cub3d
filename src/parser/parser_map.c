@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:26:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 20:49:28 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:37:27 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ t_error	parser_map(int fd, t_cub3d *cub3d)
 	t_list	*aux;
 	size_t	i;
 
-	map = parse_read_map_fd(fd);
+	error = parse_read_map_fd(fd, &map);
+	if (error != NO_ERROR)
+		return (error);
 	if (!validate_is_map(map))
 		return (UNKNOWN_CHARACTER_MAP);
 	error = validate_player(map, cub3d);

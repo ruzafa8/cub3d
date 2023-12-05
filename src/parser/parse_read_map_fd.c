@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:16:23 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 20:46:42 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:36:24 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,52 +44,44 @@ static void	padd_map(t_list	*map)
 	}
 }
 
-static char	*get_next_line_no_breakline(int fd)
+static t_error	skip_empty_lines(int fd, char **line)
 {
-	char 	*result;
-	char 	*line;
-	size_t	len;
-	size_t	i;
+	char	*id;
+	char	*value;
+	t_error	err;
 
-	line = ft_get_next_line(fd);
-	len = ft_strlen(line);
-	result = (char *) ft_calloc(len, sizeof(char));
-	i = 0;
-	while (i < len - 1)
+	*line = ft_get_next_line(fd);
+	while (**line == '\n')
 	{
-		result[i] = line[i];
-		i++;
+		free(*line);
+		*line = ft_get_next_line(fd);
 	}
-	free(line);
-	return (result);
+	err = parseable_property(*line, &id, &value);
+	if (err == NOT_A_PROPERTY)
+		return (NO_ERROR);
+	if (err == NO_ERROR)
+	{
+		free(id);
+		free(value);
+	}
+	return (TOO_MUCH_PROPERTIES);
 }
 
-static char	*skip_empty_lines(int fd)
+t_error	parse_read_map_fd(int fd, t_list **map)
 {
 	char	*line;
+	t_error	error;
 
-	line = get_next_line_no_breakline(fd);
-	while (*line == 0)
-	{
-		free(line);
-		line = get_next_line_no_breakline(fd);
-	}
-	return (line);
-}
-
-t_list	*parse_read_map_fd(int fd)
-{
-	t_list	*map;
-	char	*line;
-
-	line = skip_empty_lines(fd);
-	map = 0;
+	error = skip_empty_lines(fd, &line);
+	if (error)
+		return (error);
+	*map = 0;
 	while (line)
 	{
-		ft_lstadd_back(&map, ft_lstnew(str_remove_last(line)));
+		ft_lstadd_back(map, ft_lstnew(str_remove_last(line)));
 		free(line);
 		line = ft_get_next_line(fd);
 	}
-	padd_map(map);
-	return (map);
+	padd_map(*map);
+	return (NO_ERROR);
 }

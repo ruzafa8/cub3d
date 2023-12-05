@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 16:46:14 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 19:25:50 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:33:35 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,8 @@ void	validator_print_errors(t_error error)
 		ft_printf(RGB_NUM_PARAMS_ERR);
 	else if (error == BORDER_ERROR)
 		ft_printf(BORDER_ERROR_ERR);
+	else if (error == NOT_A_PROPERTY)
+		ft_printf(NOT_A_PROPERTY_ERR);
+	else if (error == TOO_MUCH_PROPERTIES)
+		ft_printf(TOO_MUCH_PROPERTIES_ERR);
 }
