@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:31 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 12:33:02 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:26:41 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef enum e_error
 	RGB_NUM_PARAMS,
 	BORDER_ERROR,
 	NOT_A_PROPERTY,
-	TOO_MUCH_PROPERTIES,
+	REPEATED_IDENTIFIER,
 }	t_error;
 
 #endif
