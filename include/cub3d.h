@@ -6,7 +6,7 @@
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 15:58:59 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:25:51 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,33 @@
 # include "map.h"
 # include "MLX42/MLX42.h"
 
-# define BUFFER_SIZE 1024
+# define BUFFER_SIZE 	1024
+# define WIDTH			640
+# define HEIGHT			480
+# define TEX_SIZE		64
+# define INFINITE		1e30
+
+typedef struct s_raycast
+{
+	char	player_dir;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	int 	map_x;
+	int 	map_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+} t_raycast;
 
 typedef struct s_player
 {
-	float	x;
-	float	y;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double 	plane_x;
+	double	plane_y; 
 }	t_player;
 
 typedef struct s_cub3d
@@ -47,6 +68,7 @@ typedef struct s_data
 	mlx_t		*mlx;
 	mlx_image_t	*game_img;
 	mlx_image_t	*bg_img;
+	t_raycast	*raycast;
 }	t_data;
 
 /*** VALIDATION FUNCTIONS ***/
@@ -73,6 +95,7 @@ char	*spaces_trim(char *str);
 
 /*** RENDER ***/
 void	init_sprite(t_data *data);
+void	init_structs(t_data *data);
 void	paint_ceil_floor(t_data *data);
 
 #endif

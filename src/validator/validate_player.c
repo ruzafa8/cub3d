@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_player.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:07:12 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 12:00:11 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:13:55 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static t_player	*init_player(int x, int y)
 	t_player	*player;
 
 	player = (t_player *) ft_calloc(1, sizeof(t_player));
-	player->x = x;
-	player->y = y;
+	player->pos_x = x;
+	player->pos_y = y;
 	return (player);
 }
 
