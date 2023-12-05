@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 16:12:04 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:33:35 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:18:20 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 /**
  * The extension of the file must be ".cub"
+ * @param filename the file name.
+ * @returns true if the filename finishes in .cub otherwise, returns false.
  */
 static int	validate_file_extension(char *filename)
 {

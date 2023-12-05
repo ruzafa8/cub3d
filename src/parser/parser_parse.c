@@ -6,11 +6,19 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 17:14:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 12:00:48 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:30:56 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int cub3d_filled(t_cub3d *cub3d)
+{
+	return (cub3d->ceil_color != 0 && cub3d->floor_color
+		&& cub3d->east_texture && cub3d->north_texture
+		&& cub3d->south_texture && cub3d->west_texture
+	);
+}
 
 static t_cub3d	*parse_fd(int fd, t_error *error)
 {
@@ -19,13 +27,15 @@ static t_cub3d	*parse_fd(int fd, t_error *error)
 
 	cub3d = (t_cub3d *) ft_calloc(1, sizeof(t_cub3d));
 	*error = NO_ERROR;
-	line = spaces_trim(ft_get_next_line(fd));
-	while (line && *error == NO_ERROR && !validate_line_is_map(line))
+	while (*error == NO_ERROR && !cub3d_filled(cub3d))
 	{
-		*error = parse_property(line, cub3d);
 		line = spaces_trim(ft_get_next_line(fd));
+		if (!line)
+			break ;
+		*error = parse_property(line, cub3d);
 	}
-	*error = parser_map(fd, cub3d);
+	if (*error == NO_ERROR)
+		*error = parser_map(fd, cub3d);
 	if (*error == NO_ERROR)
 		return (cub3d);
 	parser_free_cub3d(&cub3d);
