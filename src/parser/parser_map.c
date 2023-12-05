@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:26:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 12:37:27 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:05:42 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,25 @@ static t_map	*char_array_to_map_array(char *c, size_t len)
 	return (res);
 }
 
+static t_error	convert_map(t_cub3d *cub3d, t_list *map)
+{
+	size_t	i;
+
+	cub3d->height = ft_lstsize(map);
+	cub3d->width = ft_strlen((char *) map->content);
+	cub3d->map = (t_map **) ft_calloc(cub3d->height, sizeof(t_map *));
+	if (!cub3d->map)
+		return (MEMORY_ERROR);
+	i = 0;
+	while (map)
+	{
+		cub3d->map[i] = char_array_to_map_array(map->content, cub3d->width);
+		map = map->next;
+		i++;
+	}
+	return (NO_ERROR);
+}
+
 /**
  * TODO: Valgrind.
  */
@@ -47,8 +66,6 @@ t_error	parser_map(int fd, t_cub3d *cub3d)
 {
 	t_error	error;
 	t_list	*map;
-	t_list	*aux;
-	size_t	i;
 
 	error = parse_read_map_fd(fd, &map);
 	if (error != NO_ERROR)
@@ -56,21 +73,11 @@ t_error	parser_map(int fd, t_cub3d *cub3d)
 	if (!validate_is_map(map))
 		return (UNKNOWN_CHARACTER_MAP);
 	error = validate_player(map, cub3d);
-	cub3d->height = ft_lstsize(map);
 	if (error != NO_ERROR)
 		return (error);
-	cub3d->map = (t_map **) ft_calloc(cub3d->height, sizeof(t_map *));
-	if (!cub3d->map)
-		return (MEMORY_ERROR);
-	i = 0;
-	aux = map;
-	cub3d->width = ft_strlen((char *) map->content);
-	while (aux)
-	{
-		cub3d->map[i] = char_array_to_map_array(aux->content, cub3d->width);
-		aux = aux->next;
-		i++;
-	}
+	error = convert_map(cub3d, map);
+	if (error != NO_ERROR)
+		return (error);
 	if (!validate_border(cub3d->map, cub3d->height, cub3d->width))
 		return (BORDER_ERROR);
 	return (error);
