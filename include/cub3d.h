@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/06 12:34:52 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:49:15 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,21 @@
 
 typedef struct s_raycast
 {
-	char	player_dir;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-	int 	map_x;
-	int 	map_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-} t_raycast;
+	char			player_dir;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
+	int				map_x;
+	int				map_y;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	double			side_dist_x;
+	double			side_dist_y;
+	t_direction		step_x;
+	t_direction		step_y;
+	t_hit			side;
+}	t_raycast;
 
 typedef struct s_player
 {
@@ -46,8 +51,8 @@ typedef struct s_player
 	double	pos_y;
 	double	dir_x;
 	double	dir_y;
-	double 	plane_x;
-	double	plane_y; 
+	double	plane_x;
+	double	plane_y;
 }	t_player;
 
 typedef struct s_cub3d
@@ -101,5 +106,6 @@ char	*spaces_trim(char *str);
 void	init_sprite(t_data *data);
 void	init_structs(t_data *data);
 void	paint_ceil_floor(t_data *data);
+void	render_frame(t_data *data);
 
 #endif
