@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:51:27 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/11/29 21:18:22 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:29:25 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,20 @@ typedef enum e_map
 {
 	FLOOR,
 	WALL,
-	VOID
+	VOID,
 }	t_map;
+
+typedef enum e_hit
+{
+	HIT_X,
+	HIT_Y,
+}	t_hit;
+
+typedef enum e_direction
+{
+	NONE,
+	FORWARD,
+	BACKWARD,
+}	t_direction;
 
 #endif
