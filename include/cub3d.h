@@ -6,7 +6,7 @@
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 17:37:25 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:16:35 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ typedef struct s_raycast
 	int 	map_y;
 	double	delta_dist_x;
 	double	delta_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		step_x;
+	int		step_y;
 } t_raycast;
 
 typedef struct s_player
@@ -101,5 +105,6 @@ char	*spaces_trim(char *str);
 void	init_sprite(t_data *data);
 void	init_structs(t_data *data);
 void	paint_ceil_floor(t_data *data);
+void	render_frame(t_data *data);
 
 #endif
