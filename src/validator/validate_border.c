@@ -6,19 +6,22 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:49:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 12:41:55 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:50:07 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	first_end_line(t_map *line)
+static int	first_end_line(t_map *line, size_t len)
 {
-	while (*line)
+	size_t	index;
+
+	index = 0;
+	while (index < len)
 	{
-		if (*line != VOID && *line != WALL)
+		if (line[index] != VOID && line[index] != WALL)
 			return (0);
-		line++;
+		index++;
 	}
 	return (1);
 }
@@ -41,7 +44,8 @@ int	validate_border(t_map **map, size_t max_x, size_t max_y)
 	size_t	j;
 
 	i = 1;
-	if (!first_end_line(map[0]) || ! first_end_line(map[max_x - 1]))
+	if (!first_end_line(map[0], max_x)
+		|| ! first_end_line(map[max_x - 1], max_x))
 		return (0);
 	while (i < max_x - 1)
 	{
