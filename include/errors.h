@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:31 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 17:12:38 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:37:42 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define TOO_MUCH_PROPERTIES_ERR "ERROR\nToo much properties"
 # define REPEATED_IDENTIFIER_ERR "ERROR\nProperties duplicated"
 # define IDENTIFIER_ERROR_ERR "ERROR\nFile contens unknown properties"
+# define EXPECTED_MAP_ERR "ERROR\nExpected a map at file"
 
 typedef enum e_error
 {
@@ -46,6 +47,7 @@ typedef enum e_error
 	NOT_A_PROPERTY,
 	TOO_MUCH_PROPERTIES,
 	REPEATED_IDENTIFIER,
+	EXPECTED_MAP,
 }	t_error;
 
 #endif

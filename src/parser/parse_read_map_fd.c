@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:16:23 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 12:36:24 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:02:30 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ static void	padd_map(t_list	*map)
 
 static t_error	skip_empty_lines(int fd, char **line)
 {
-	char	*id;
-	char	*value;
-	t_error	err;
+	char	*aux;
 
 	*line = ft_get_next_line(fd);
 	while (**line == '\n')
@@ -56,15 +54,12 @@ static t_error	skip_empty_lines(int fd, char **line)
 		free(*line);
 		*line = ft_get_next_line(fd);
 	}
-	err = parseable_property(*line, &id, &value);
-	if (err == NOT_A_PROPERTY)
-		return (NO_ERROR);
-	if (err == NO_ERROR)
-	{
-		free(id);
-		free(value);
-	}
-	return (TOO_MUCH_PROPERTIES);
+	aux = str_remove_last(*line);
+	if (validate_line_is_map(aux))
+		return (free(aux), NO_ERROR);
+	free(aux);
+	free(*line);
+	return (EXPECTED_MAP);
 }
 
 t_error	parse_read_map_fd(int fd, t_list **map)
