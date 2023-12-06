@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 19:25:16 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 16:55:33 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:16:19 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_error	set_once_or_error(char **texture, char *value)
  * @returns NO_ERROR if that position points to an empty space
  * or REPEATED_IDENTIFIER error if the value is already set.
  */
-static t_error set_number_or_error(char *rgb_str, int *number)
+static t_error	set_number_or_error(char *rgb_str, int *number)
 {
 	if (*number)
 		return (REPEATED_IDENTIFIER);

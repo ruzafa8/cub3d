@@ -6,13 +6,13 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 17:14:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 20:30:56 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:14:32 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int cub3d_filled(t_cub3d *cub3d)
+static int	cub3d_filled(t_cub3d *cub3d)
 {
 	return (cub3d->ceil_color != 0 && cub3d->floor_color
 		&& cub3d->east_texture && cub3d->north_texture

@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 16:37:03 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/04 18:25:53 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:15:38 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static t_error	validate_number(char *number, int *number_to_int)
 	return (NO_ERROR);
 }
 
-static void free_split(char **split)
+static void	free_split(char **split)
 {
 	int	i;
 
