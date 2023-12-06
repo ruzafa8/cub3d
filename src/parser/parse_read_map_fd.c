@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:16:23 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/06 12:24:22 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:35:10 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,14 @@ t_error	parse_read_map_fd(int fd, t_list **map)
 	char	*aux;
 
 	line = skip_empty_lines(fd);
-	aux = str_remove_last(line);
+	aux = str_remove_last_breakdown(line);
 	if (!validate_line_is_map(aux))
 		return (free(aux), free(line), EXPECTED_MAP);
 	free(aux);
 	*map = 0;
 	while (line)
 	{
-		ft_lstadd_back(map, ft_lstnew(str_remove_last(line)));
+		ft_lstadd_back(map, ft_lstnew(str_remove_last_breakdown(line)));
 		free(line);
 		line = ft_get_next_line(fd);
 	}

@@ -6,13 +6,13 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:59:44 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/06 12:32:49 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:34:42 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	*str_remove_last(char *str)
+char	*str_remove_last_breakdown(char *str)
 {
 	char	*res;
 	size_t	len;

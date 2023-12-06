@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 17:37:25 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:34:52 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_error	parse_read_map_fd(int fd, t_list **map);
 
 /*** STRING UTILS ***/
 char	*str_padd_spaces(char *str, size_t len);
-char	*str_remove_last(char *str);
+char	*str_remove_last_breakdown(char *str);
 size_t	spaces_find_next(char *str);
 size_t	spaces_skip_from_index(char *str, size_t index);
 char	*spaces_trim(char *str);
