@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:16:23 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/06 12:35:10 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:04:03 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static char	*skip_empty_lines(int fd)
 	char	*line;
 
 	line = ft_get_next_line(fd);
-	while (*line == '\n')
+	while (line && *line == '\n')
 	{
 		free(line);
 		line = ft_get_next_line(fd);
