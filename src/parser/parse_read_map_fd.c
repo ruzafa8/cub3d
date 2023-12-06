@@ -6,12 +6,19 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:16:23 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/06 11:02:30 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:23:49 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * Given a list of strings, returns the lenght of the biggest string.
+ * 
+ * @param map: the list of strings.
+ * 
+ * @returns the max length.
+ */
 static size_t	get_max_len(t_list *map)
 {
 	size_t	max;
@@ -29,6 +36,14 @@ static size_t	get_max_len(t_list *map)
 	return (max);
 }
 
+/**
+ * This function aims to normalize the len of the map lines.
+ * Search for the longest one and pads the other ones with spaces
+ * to the longest one.
+ * 
+ * @param map: A list with the lines of the map. The function updates
+ * the line padding.
+ */
 static void	padd_map(t_list	*map)
 {
 	size_t	max_len;
@@ -44,32 +59,47 @@ static void	padd_map(t_list	*map)
 	}
 }
 
-static t_error	skip_empty_lines(int fd, char **line)
+/**
+ *  This function reads lines until it is not empty.
+ *  As get_next_line returns the line with the '\n', we just
+ *  need to verify if the first char is '\n'.
+ * 
+ * @param fd: File descriptor to read.
+ * 
+ * @returns the next line which is not empty
+ */
+static char	*skip_empty_lines(int fd)
 {
-	char	*aux;
+	char	*line;
 
-	*line = ft_get_next_line(fd);
-	while (**line == '\n')
+	line = ft_get_next_line(fd);
+	while (*line == '\n')
 	{
-		free(*line);
-		*line = ft_get_next_line(fd);
+		free(line);
+		line = ft_get_next_line(fd);
 	}
-	aux = str_remove_last(*line);
-	if (validate_line_is_map(aux))
-		return (free(aux), NO_ERROR);
-	free(aux);
-	free(*line);
-	return (EXPECTED_MAP);
+	return (line);
 }
 
+/**
+ * Parses the map from the file.
+ * 
+ * @param fd: The file descriptor where the map is readen.
+ * @param map: Pointer to store the map readen.
+ * 
+ * @returns an error code. NO_ERROR if everything is OK.
+ */
 t_error	parse_read_map_fd(int fd, t_list **map)
 {
 	char	*line;
+	char	*aux;
 	t_error	error;
 
-	error = skip_empty_lines(fd, &line);
-	if (error)
-		return (error);
+	line = skip_empty_lines(fd);
+	aux = str_remove_last(line);
+	if (!validate_line_is_map(aux))
+		return (free(aux), free(line), EXPECTED_MAP);
+	free(aux);
 	*map = 0;
 	while (line)
 	{
