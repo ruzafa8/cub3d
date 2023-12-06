@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:31 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 12:33:02 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:12:38 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define BORDER_ERROR_ERR "ERROR\nMap not surrounded by walls"
 # define NOT_A_PROPERTY_ERR "ERROR\nTrying to read an invalid property"
 # define TOO_MUCH_PROPERTIES_ERR "ERROR\nToo much properties"
+# define REPEATED_IDENTIFIER_ERR "ERROR\nProperties duplicated"
+# define IDENTIFIER_ERROR_ERR "ERROR\nFile contens unknown properties"
 
 typedef enum e_error
 {
@@ -43,6 +45,7 @@ typedef enum e_error
 	BORDER_ERROR,
 	NOT_A_PROPERTY,
 	TOO_MUCH_PROPERTIES,
+	REPEATED_IDENTIFIER,
 }	t_error;
 
 #endif

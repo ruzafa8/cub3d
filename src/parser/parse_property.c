@@ -6,38 +6,82 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 19:25:16 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 12:29:28 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:16:19 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * This function tries put at texture the value passed as params.
+ * If already exists, returns an error.
+ * 
+ * @param texture: Pointer to the position to store the value.
+ * @param value: The value to store.
+ * 
+ * @returns NO_ERROR if that position points to an empty space
+ * or REPEATED_IDENTIFIER error if the value is already set.
+ */
+static t_error	set_once_or_error(char **texture, char *value)
+{
+	if (*texture)
+		return (REPEATED_IDENTIFIER);
+	*texture = ft_strdup(value);
+	return (NO_ERROR);
+}
+
+/**
+ * This function tries to put the RGB color passed as param to the
+ * other position specified.
+ * If the position has got a color already it returns error and
+ * it is not set.
+ * 
+ * @param rgb_str: The rgb color as string, formatted as "R,G,B"
+ * where R, G, and B are number between 0 and 255.
+ * @param number: Pointer to the position to store the value.
+ * 
+ * @returns NO_ERROR if that position points to an empty space
+ * or REPEATED_IDENTIFIER error if the value is already set.
+ */
+static t_error	set_number_or_error(char *rgb_str, int *number)
+{
+	if (*number)
+		return (REPEATED_IDENTIFIER);
+	return (validate_colors(rgb_str, number));
+}
+
 static t_error	add_to_cub3d(char *id, char *value, t_cub3d *cub3d)
 {
-	t_error	error;
-
-	error = NO_ERROR;
 	if (ft_strncmp(id, "NO", 2) == 0)
-		cub3d->north_texture = ft_strdup(value);
+		return (set_once_or_error(&cub3d->north_texture, value));
 	else if (ft_strncmp(id, "SO", 2) == 0)
-		cub3d->south_texture = ft_strdup(value);
+		return (set_once_or_error(&cub3d->south_texture, value));
 	else if (ft_strncmp(id, "EA", 2) == 0)
-		cub3d->east_texture = ft_strdup(value);
+		return (set_once_or_error(&cub3d->east_texture, value));
 	else if (ft_strncmp(id, "WE", 2) == 0)
-		cub3d->west_texture = ft_strdup(value);
+		return (set_once_or_error(&cub3d->west_texture, value));
 	else if (ft_strncmp(id, "F", 1) == 0)
-		error = validate_colors(value, &cub3d->floor_color);
+		return (set_number_or_error(value, &cub3d->floor_color));
 	else if (ft_strncmp(id, "C", 1) == 0)
-		error = validate_colors(value, &cub3d->ceil_color);
-	else
-		error = IDENTIFIER_ERROR;
-	return (error);
+		return (set_number_or_error(value, &cub3d->ceil_color));
+	return (IDENTIFIER_ERROR);
 }
 
 /**
  * This function tries to extract the identifier and the value of a 
  * line. If there is any problem, an error is returned and params are
  * freed.
+ * 
+ * @param line: A string with the following format: 
+ * ID (SPACES) VALUE, where ID and VALUE are alpha chars and (SPACES)
+ * are one or more spaces (tabs, spaces, break line, ...)
+ * @param identifier: A pointer to the position to store the ID found at
+ * line param.
+ * @param value: A pointer to the position to store the VALUE found at
+ * line param.
+ * 
+ * @returns An error found while trying to parse the line, or NO_ERROR
+ * if there was no problem parsing the line param.
  */
 t_error	parseable_property(char *line, char **identifier, char **value)
 {

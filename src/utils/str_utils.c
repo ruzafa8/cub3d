@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:59:44 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/02 15:50:43 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:15:15 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ char	*str_remove_last(char *str)
 }
 
 /**
- * This function creates a new string with an specific len adding spaces to end of it.
+ * This function creates a new string with an specific len adding
+ * spaces to end of it.
  * @param str: The string to replicate.
  * @param len: The new size of the string.
  * 
