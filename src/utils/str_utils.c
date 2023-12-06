@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:59:44 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/06 10:15:15 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:32:49 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*str_remove_last(char *str)
 	size_t	index;
 
 	len = ft_strlen(str);
+	if (len > 0 && str[len - 1] != '\n')
+		return (ft_strdup(str));
 	res = (char *) ft_calloc(len, sizeof(char));
 	index = 0;
 	while (index < len - 1)
