@@ -6,12 +6,18 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:59:44 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/06 12:34:42 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:39:33 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * Removes the last character if it is a breakline.
+ * 
+ * @returns a new string copied from the param without a breakline
+ * at the end if it has one.
+ */
 char	*str_remove_last_breakdown(char *str)
 {
 	char	*res;
