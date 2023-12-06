@@ -6,7 +6,7 @@
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:32 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/06 12:35:13 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:38:58 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,54 @@
 
 static void	exec_dda(t_data *data, t_raycast *raycast)
 {
-	int	hit;
-
-	hit = 0;
-	while (!hit)
+	while (true)
 	{
 		if (raycast->side_dist_x < raycast->side_dist_y)
 		{
 			raycast->side_dist_x += raycast->delta_dist_x;
-			raycast->map_x += raycast->step_x;
-			raycast->side = 0;
+			if (raycast->step_x == FORWARD)
+				raycast->map_x++;
+			else
+				raycast->map_x--;
+			raycast->side = HIT_X;
 		}
 		else
 		{
 			raycast->side_dist_y += raycast->delta_dist_y;
-			raycast->map_y += raycast->step_y;
-			raycast->side = 1;
+			if (raycast->step_y == FORWARD)
+				raycast->map_y++;
+			else
+				raycast->map_y--;
+			raycast->side = HIT_Y;
 		}
+		if (data->cub3d->map[raycast->map_x][raycast->map_y] == WALL)
+			return ;
 	}
-	if (data->cub3d->map[raycast->map_x][raycast->map_y] == 1)
-		hit = 1;
 }
 
 static void	cal_euclidean_dis(t_raycast *raycast, t_player *player)
 {
 	if (raycast->dir_x < 0)
 	{
-		raycast->step_x = -1;
+		raycast->step_x = BACKWARD;
 		raycast->side_dist_x = (player->pos_x - raycast->map_x)
 			* raycast->delta_dist_x;
 	}
 	else
 	{
-		raycast->step_x = 1;
+		raycast->step_x = FORWARD;
 		raycast->side_dist_x = (raycast->map_x + 1.0 - player->pos_x)
 			* raycast->delta_dist_x;
 	}
 	if (raycast->dir_y < 0)
 	{
-		raycast->step_y = -1;
+		raycast->step_y = BACKWARD;
 		raycast->side_dist_y = (player->pos_y - raycast->map_y)
 			* raycast->delta_dist_y;
 	}
 	else
 	{
-		raycast->step_y = 1;
+		raycast->step_y = FORWARD;
 		raycast->side_dist_y = (raycast->map_y + 1.0 - player->pos_y)
 			* raycast->delta_dist_y;
 	}
