@@ -6,7 +6,7 @@
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/06 10:16:35 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:22:22 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_raycast
 	double	side_dist_y;
 	int		step_x;
 	int		step_y;
+	int		side;
 } t_raycast;
 
 typedef struct s_player
