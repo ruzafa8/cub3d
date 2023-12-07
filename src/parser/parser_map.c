@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:26:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/05 15:05:42 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:37:15 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,13 @@ static t_error	convert_map(t_cub3d *cub3d, t_list *map)
 	return (NO_ERROR);
 }
 
+static void	free_map(t_list **map)
+{
+	if (!map)
+		return ;
+	ft_lstclear(map, free);
+}
+
 /**
  * TODO: Valgrind.
  */
@@ -69,13 +76,14 @@ t_error	parser_map(int fd, t_cub3d *cub3d)
 
 	error = parse_read_map_fd(fd, &map);
 	if (error != NO_ERROR)
-		return (error);
+		return (free_map(&map), error);
 	if (!validate_is_map(map))
-		return (UNKNOWN_CHARACTER_MAP);
+		return (free_map(&map), UNKNOWN_CHARACTER_MAP);
 	error = validate_player(map, cub3d);
 	if (error != NO_ERROR)
-		return (error);
+		return (free_map(&map), error);
 	error = convert_map(cub3d, map);
+	free_map(&map);
 	if (error != NO_ERROR)
 		return (error);
 	if (!validate_border(cub3d->map, cub3d->height, cub3d->width))
