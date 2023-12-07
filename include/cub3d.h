@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/06 15:49:15 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:14:28 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ typedef struct s_raycast
 	t_direction		step_x;
 	t_direction		step_y;
 	t_hit			side;
+	int				draw_start;
+	int				draw_end;
+	int				line_height;
+	double			perp_wall_dist;
+
 }	t_raycast;
 
 typedef struct s_player
