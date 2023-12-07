@@ -6,11 +6,26 @@
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:32 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/06 15:38:58 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:07:15 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	cal_heights(t_raycast *raycast)
+{
+	if (raycast->side == HIT_X)
+		raycast->perp_wall_dist = raycast->side_dist_x - raycast->delta_dist_x;
+	else
+		raycast->perp_wall_dist = raycast->side_dist_y - raycast->delta_dist_y;
+	raycast->line_height = (int) HEIGHT / raycast->perp_wall_dist;
+	raycast->draw_start = -(raycast->line_height) / 2 + HEIGHT / 2;
+	if (raycast->draw_start < 0)
+		raycast->draw_start = 0;
+	raycast->draw_end = raycast->line_height / 2 + HEIGHT / 2;
+	if (raycast->draw_end >= HEIGHT)
+		raycast->draw_end = HEIGHT - 1;
+}
 
 static void	exec_dda(t_data *data, t_raycast *raycast)
 {
@@ -102,7 +117,7 @@ void	render_frame(t_data *data)
 	{
 		set_raycast(data, x);
 		exec_dda(data, data->raycast);
-		//calculate_heights(data->ray);
+		cal_heights(data->raycast);
 		//textures_calculation(data, data->ray, data->player, x);
 	}
 }
