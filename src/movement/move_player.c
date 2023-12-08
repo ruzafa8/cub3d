@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:16:25 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/08 16:40:47 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 17:20:22 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,8 @@ void	move_player(void *game_data)
 		move_backward(data);
 	else if (mlx_is_key_down(data->mlx, MLX_KEY_D))
 		move_right(data);
+	else if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+		rotate_player(data, -1);
+	else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+		rotate_player(data, 1);
 }

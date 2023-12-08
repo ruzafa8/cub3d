@@ -38,6 +38,7 @@ SRC      = main.c\
 		   render/raycast.c\
 		   movement/move_player.c\
 		   movement/valid_and_update_pos.c\
+		   movement/rotate.c
 
 SOURCES  := $(addprefix $(SRCDIR)/, $(SRC))
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
