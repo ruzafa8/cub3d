@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 20:00:03 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/08 16:21:28 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 18:19:33 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/**
+ * get to where the person is looking at.
+ * @param data: info raycast.
+ */
 
 static int	get_texture_index(t_raycast *raycast)
 {
@@ -25,6 +30,12 @@ static int	get_texture_index(t_raycast *raycast)
 		return (SOUTH);
 	return (NORTH);
 }
+/**
+ * Paint the pixels on the map.
+ * @param data: info data
+ * @param raycast: info raycast.
+ * @param x: line.
+ */
 
 static void	print_map(t_data *data, t_raycast *raycast, int x)
 {
@@ -47,6 +58,13 @@ static void	print_map(t_data *data, t_raycast *raycast, int x)
 		mlx_put_pixel(data->game_img, x, y, color);
 	}
 }
+/**
+ * calculates the size of the textures with draw_start and draw_end.
+ * @param data: info game.
+ * @param raycast: info raycast.
+ * @param player: info player.
+ * @param x: line
+ */
 
 void	cal_texture(t_data *data, t_raycast *raycast, t_player *player, int x)
 {
@@ -69,6 +87,10 @@ void	cal_texture(t_data *data, t_raycast *raycast, t_player *player, int x)
 		* tex->step;
 	print_map(data, raycast, x);
 }
+/**
+ * paint the sky and the ground right in the middle to give a 3D effect.
+ * @param data: info game.
+ */
 
 void	paint_ceil_floor(t_data *data)
 {
@@ -88,6 +110,11 @@ void	paint_ceil_floor(t_data *data)
 		}
 	}
 }
+/**
+ * for each frame, everything is reset to zero because otherwise
+ * one is painted on top of the other.
+ * @param data: info game.
+ */
 
 void	cleaner_img(t_data *data)
 {

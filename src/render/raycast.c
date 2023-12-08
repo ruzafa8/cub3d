@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:32 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/08 16:10:05 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 18:06:49 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/**
+ * calculating the height of the walls
+ * (the closer the bigger and the farther the smaller).
+ * @param raycast: info to make raycast.
+ */
 
 static void	cal_heights(t_raycast *raycast)
 {
@@ -26,6 +32,12 @@ static void	cal_heights(t_raycast *raycast)
 	if (raycast->draw_end >= HEIGHT)
 		raycast->draw_end = HEIGHT - 1;
 }
+
+/**
+ * trace the rays from the player's position to the walls to create 3D effect.
+ * @param data: info game.
+ * @param raycast: info to make raycast.
+ */
 
 static void	exec_dda(t_data *data, t_raycast *raycast)
 {
@@ -53,6 +65,11 @@ static void	exec_dda(t_data *data, t_raycast *raycast)
 			return ;
 	}
 }
+/**
+ * calculate the Eucladian distance to get the shortest distance.
+ * @param raycast: info to make raycast.
+ * @param player: info player.
+ */
 
 static void	cal_euclidean_dis(t_raycast *raycast, t_player *player)
 {
@@ -81,6 +98,11 @@ static void	cal_euclidean_dis(t_raycast *raycast, t_player *player)
 			* raycast->delta_dist_y;
 	}
 }
+/**
+ * adding and calculating raycast parameters.
+ * @param data: info game.
+ * @param x: one column.
+ */
 
 static void	set_raycast(t_data *data, int x)
 {
@@ -107,6 +129,11 @@ static void	set_raycast(t_data *data, int x)
 		raycast->delta_dist_y = fabs(1 / raycast->dir_y);
 	cal_euclidean_dis(raycast, player);
 }
+/**
+ * launches a raycast for each pixel column to
+ *  calculate the distance to the walls.
+ * @param data: info game.
+ */
 
 void	render_frame(t_data *data)
 {
