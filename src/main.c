@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:59:15 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 12:33:05 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:27:10 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	data.mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 	if (!data.mlx)
 	{
-		//TODO: liberar todo ->free_and_exit(data, EXIT_FAILURE);
+		free_and_exit(&data, EXIT_FAILURE);
 		ft_putendl_fd(MALLOC_ERR, STDERR_FILENO);
 	}
 	data.cub3d->player->dir_x = 1;
@@ -35,6 +35,6 @@ int	main(int argc, char **argv)
 	paint_ceil_floor(&data);
 	mlx_loop_hook(data.mlx, &move_player, &data);
 	mlx_loop(data.mlx);
-	parser_free_cub3d(&data.cub3d);
+	free_and_exit(&data, EXIT_SUCCESS);
 	return (0);
 }

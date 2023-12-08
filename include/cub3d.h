@@ -6,7 +6,11 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/12/08 12:49:17 by aruzafa-         ###   ########.fr       */
+=======
+/*   Updated: 2023/12/08 16:23:24 by atrujill         ###   ########.fr       */
+>>>>>>> origin/master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +31,8 @@
 # define HEIGHT			480
 # define TEX_SIZE		64
 # define INFINITE		1e30
+# define MOV_SPEED 		0.035
+# define COLLIDER_DIST	1.25
 
 typedef struct s_texture_info
 {
@@ -41,8 +47,6 @@ typedef struct s_raycast
 	char			player_dir;
 	double			dir_x;
 	double			dir_y;
-	double			plane_x;
-	double			plane_y;
 	int				map_x;
 	int				map_y;
 	double			delta_dist_x;
@@ -130,5 +134,9 @@ void	cal_texture(t_data *data, t_raycast *raycast, t_player *player, int x);
 
 /*** MOVEMENT ***/
 void	move_player(void *game_data);
+void	update_pos(t_data *data, double x, double y);
+
+/*** FREE ***/
+void	free_and_exit(t_data *data, int exit_code_num);
 
 #endif

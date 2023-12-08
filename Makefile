@@ -20,6 +20,7 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/
 # Source files
 SRC      = main.c\
 		   init_data.c\
+		   free.c\
 		   validator/validator_validate_args.c\
 		   validator/validator_print_errors.c\
 		   validator/validate_is_map.c\
@@ -36,6 +37,7 @@ SRC      = main.c\
 		   render/texture.c\
 		   render/raycast.c\
 		   movement/move_player.c\
+		   movement/valid_and_update_pos.c\
 
 SOURCES  := $(addprefix $(SRCDIR)/, $(SRC))
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
