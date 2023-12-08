@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 11:49:49 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 12:49:17 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <string.h>
+# include <math.h>
 # include "errors.h"
 # include "map.h"
 # include "MLX42/MLX42.h"
@@ -26,6 +27,14 @@
 # define HEIGHT			480
 # define TEX_SIZE		64
 # define INFINITE		1e30
+
+typedef struct s_texture_info
+{
+	int			tex_x;
+	int			tex_y;
+	double		step;
+	double		tex_pos;
+}	t_texture_info;
 
 typedef struct s_raycast
 {
@@ -47,6 +56,7 @@ typedef struct s_raycast
 	int				draw_end;
 	int				line_height;
 	double			perp_wall_dist;
+	double			wall_x;
 
 }	t_raycast;
 
@@ -76,11 +86,13 @@ typedef struct s_cub3d
 
 typedef struct s_data
 {
-	t_cub3d		*cub3d;
-	mlx_t		*mlx;
-	mlx_image_t	*game_img;
-	mlx_image_t	*bg_img;
-	t_raycast	*raycast;
+	t_cub3d			*cub3d;
+	mlx_t			*mlx;
+	mlx_image_t		*game_img;
+	mlx_image_t		*bg_img;
+	t_raycast		*raycast;
+	t_texture_info	*tex_info;
+	mlx_texture_t	*textures[4];
 }	t_data;
 
 /*** VALIDATION FUNCTIONS ***/
@@ -110,7 +122,13 @@ char	*spaces_trim(char *str);
 /*** RENDER ***/
 void	init_sprite(t_data *data);
 void	init_structs(t_data *data);
+void	init_textures(t_data *data);
 void	paint_ceil_floor(t_data *data);
+void	cleaner_img(t_data *data);
 void	render_frame(t_data *data);
+void	cal_texture(t_data *data, t_raycast *raycast, t_player *player, int x);
+
+/*** MOVEMENT ***/
+void	move_player(void *game_data);
 
 #endif
