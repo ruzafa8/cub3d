@@ -20,6 +20,7 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/
 # Source files
 SRC      = main.c\
 		   init_data.c\
+		   free.c\
 		   validator/validator_validate_args.c\
 		   validator/validator_print_errors.c\
 		   validator/validate_is_map.c\

@@ -6,7 +6,7 @@
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 12:02:31 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:25:14 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,8 @@ void	cal_texture(t_data *data, t_raycast *raycast, t_player *player, int x);
 
 /*** MOVEMENT ***/
 void	move_player(void *game_data);
+
+/*** FREE ***/
+void	free_and_exit(t_data *data, int exit_code_num);
 
 #endif
