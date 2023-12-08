@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:07:12 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 16:26:01 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:55:11 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	set_facing(t_player *player, char facing)
 	}
 	else if (facing == 'W')
 	{
-		player->dir_x = 1;
+		player->dir_x = -1;
 		player->plane_y = -0.66;
 	}
 }
