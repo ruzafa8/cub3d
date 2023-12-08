@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:26:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 13:26:37 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 19:07:54 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,8 @@ static t_error	convert_map(t_cub3d *cub3d, t_list *map)
 
 static void	free_map(t_list **map)
 {
-	if (!map)
-		return ;
-	ft_lstclear(map, free);
+	if (*map != 0)
+		ft_lstclear(map, free);
 }
 
 /**
