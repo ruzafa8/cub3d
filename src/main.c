@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:59:15 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 12:32:02 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 12:33:05 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 	data.cub3d = parser_parse(argc, argv);
 	if (data.cub3d == 0)
 		return (1);
-	init_mxl(&data);
 	data.mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 	if (!data.mlx)
 	{

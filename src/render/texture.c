@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 20:00:03 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/08 11:37:38 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/08 12:33:47 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static void	print_map(t_data *data, t_raycast *raycast, int x)
 		texture_index = get_texture_index(raycast);
 		pixels = &data->textures[texture_index]
 			->pixels[TEX_SIZE * tex->tex_y * 4 + tex->tex_x * 4];
-	ft_printf("cococococococococococococo\n");
 		color = pixels[0] << 24 | pixels[1] << 16 | pixels[2] << 8 | pixels[3];
 		mlx_put_pixel(data->game_img, x, y, color);
 	}
