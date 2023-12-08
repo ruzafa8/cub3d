@@ -34,6 +34,8 @@ SRC      = main.c\
 		   utils/str_utils.c\
 		   utils/str_spaces.c\
 		   render/texture.c\
+		   render/raycast.c\
+		   movement/move_player.c\
 
 SOURCES  := $(addprefix $(SRCDIR)/, $(SRC))
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)

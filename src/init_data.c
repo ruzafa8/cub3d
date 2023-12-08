@@ -6,11 +6,39 @@
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 19:01:13 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/05 17:34:05 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:55:56 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	init_textures(t_data *data)
+{
+	data->textures[NORTH] = mlx_load_png(data->cub3d->north_texture);
+	if (!data->textures[NORTH])
+	{
+		ft_putendl_fd(LOAD_ERR, STDERR_FILENO);
+		//free_and_exit(data, EXIT_SUCCESS);
+	}
+	data->textures[SOUTH] = mlx_load_png(data->cub3d->south_texture);
+	if (!data->textures[SOUTH])
+	{
+		ft_putendl_fd(LOAD_ERR, STDERR_FILENO);
+		//free_and_exit(data, EXIT_SUCCESS);
+	}
+	data->textures[EAST] = mlx_load_png(data->cub3d->east_texture);
+	if (!data->textures[EAST])
+	{
+		ft_putendl_fd(LOAD_ERR, STDERR_FILENO);
+		//free_and_exit(data, EXIT_SUCCESS);
+	}
+	data->textures[WEST] = mlx_load_png(data->cub3d->west_texture);
+	if (!data->textures[WEST])
+	{
+		ft_putendl_fd(LOAD_ERR, STDERR_FILENO);
+		//free_and_exit(data, EXIT_SUCCESS);
+	}
+}
 
 void	init_sprite(t_data *data)
 {
@@ -34,6 +62,12 @@ void	init_structs(t_data *data)
 {
 	data->raycast = ft_calloc(1, sizeof(t_raycast));
 	if (!(data->raycast))
+	{
+		ft_putendl_fd(MALLOC_ERR, STDERR_FILENO);
+		//free_and_exit(data, EXIT_SUCCESS);
+	}
+	data->tex_info = ft_calloc(1, sizeof(t_texture_info));
+	if (!(data->tex_info))
 	{
 		ft_putendl_fd(MALLOC_ERR, STDERR_FILENO);
 		//free_and_exit(data, EXIT_SUCCESS);

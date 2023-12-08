@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:32 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/06 17:07:15 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/08 12:34:15 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,6 @@ void	render_frame(t_data *data)
 		set_raycast(data, x);
 		exec_dda(data, data->raycast);
 		cal_heights(data->raycast);
-		//textures_calculation(data, data->ray, data->player, x);
+		cal_texture(data, data->raycast, data->cub3d->player, x);
 	}
 }
