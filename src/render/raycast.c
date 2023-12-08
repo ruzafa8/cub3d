@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:32 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/08 12:34:15 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:10:05 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	exec_dda(t_data *data, t_raycast *raycast)
 				raycast->map_y--;
 			raycast->side = HIT_Y;
 		}
-		if (data->cub3d->map[raycast->map_x][raycast->map_y] == WALL)
+		if (data->cub3d->map[raycast->map_y][raycast->map_x] == WALL)
 			return ;
 	}
 }

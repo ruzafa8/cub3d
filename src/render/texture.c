@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 20:00:03 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/08 12:33:47 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:21:28 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static int	get_texture_index(t_raycast *raycast)
 {
 	if (raycast->side == HIT_X)
 	{
-		if (raycast->dir_x < 0)
+		if (raycast->dir_x > 0)
 			return (WEST);
 		else
 			return (EAST);
 	}
-	else if (raycast->dir_y > 0)
+	else if (raycast->dir_y < 0)
 		return (SOUTH);
 	return (NORTH);
 }

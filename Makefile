@@ -25,13 +25,13 @@ SRC      = main.c\
 		   validator/validator_print_errors.c\
 		   validator/validate_is_map.c\
 		   validator/validate_colors.c\
-		   validator/validate_player.c\
 		   validator/validate_border.c\
 		   parser/parser_parse.c\
 		   parser/parser_free_cub3d.c\
 		   parser/parser_map.c\
 		   parser/parse_property.c\
 		   parser/parse_read_map_fd.c\
+		   parser/parse_player.c\
 		   utils/str_utils.c\
 		   utils/str_spaces.c\
 		   render/texture.c\
