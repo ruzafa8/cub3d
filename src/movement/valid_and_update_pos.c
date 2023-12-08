@@ -6,7 +6,7 @@
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:51:44 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/08 16:25:34 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:32:39 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	is_valid_pos(t_data *data, double x, double y)
 	return (x > 0.25 && y > 0.25
 		&& x < data->cub3d->height - COLLIDER_DIST
 		&& y < data->cub3d->width - COLLIDER_DIST
-		&& ft_strchr("0NSEW", data->cub3d->map[(int) x][(int) y]));
+		&& data->cub3d->map[(int) x][(int) y] == FLOOR);
 }
 
 void	update_pos(t_data *data, double x, double y)
