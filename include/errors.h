@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:31 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/06 16:59:21 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 18:19:02 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define ERRORS_H
 
 /*** PRINT MENSSAGES ***/
+# define FILE_EXTENSION_ERR "Error\nInvalid file extension. Must be *.cub"
+# define NUM_ARGS_ERROR_ERR "Error\nUsage: ./cub3D <map.cub>\n"
+# define FILE_OPEN_ERR "Error\nCould not open file: "
 # define MALLOC_ERR "Error\nMemory was not allocated"
 # define LOAD_ERR "Error\nUnable to load resource"
 # define NO_PLAYER_ERR "Error\nMap has got no player"
