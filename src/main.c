@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:59:15 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 15:27:10 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:40:57 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ int	main(int argc, char **argv)
 		free_and_exit(&data, EXIT_FAILURE);
 		ft_putendl_fd(MALLOC_ERR, STDERR_FILENO);
 	}
-	data.cub3d->player->dir_x = 1;
-	data.cub3d->player->dir_y = 0;
-	data.cub3d->player->plane_x = 0;
-	data.cub3d->player->plane_y = 0.66;
 	init_textures(&data);
 	init_structs(&data);
 	init_sprite(&data);

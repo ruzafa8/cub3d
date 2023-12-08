@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:07:12 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 12:12:52 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:26:01 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	set_facing(t_player *player, char facing)
 	}
 	else if (facing == 'W')
 	{
-		player->dir_x = -1;
+		player->dir_x = 1;
 		player->plane_y = -0.66;
 	}
 }
@@ -61,6 +61,8 @@ static t_player	*init_player(int x, int y, char facing)
 	t_player	*player;
 
 	player = (t_player *) ft_calloc(1, sizeof(t_player));
+	if (!player)
+		return ((t_player *) 0);
 	player->pos_x = x;
 	player->pos_y = y;
 	set_facing(player, facing);
@@ -99,6 +101,14 @@ static t_player	*find_player(t_list *list)
 	return ((t_player *) 0);
 }
 
+/**
+ * This function validates if there is one player in the given map.
+ * 
+ * @param list: The map where perform the validation.
+ * 
+ * @return an error code if there is no player or more than 1.
+ * Else return NO_ERROR.
+ */
 static t_error	validate_one_player(t_list	*list)
 {
 	int		num_players;
@@ -141,5 +151,7 @@ t_error	parse_player(t_list *list, t_cub3d *cub3d)
 	if (error != NO_ERROR)
 		return (error);
 	cub3d->player = find_player(list);
+	if (!cub3d->player)
+		return (MEMORY_ERROR);
 	return (NO_ERROR);
 }
