@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 16:46:14 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 18:29:40 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 20:03:18 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static void	print_some_errors(t_error error)
 		return (ft_putendl_fd(REPEATED_IDENTIFIER_ERR, STDERR_FILENO));
 	if (error == IDENTIFIER_ERROR)
 		return (ft_putendl_fd(IDENTIFIER_ERROR_ERR, STDERR_FILENO));
-	if (error == EXPECTED_MAP)
-		return (ft_putendl_fd(EXPECTED_MAP_ERR, STDERR_FILENO));
 	if (error == MISSING_PROPERTIES)
 		return (ft_putendl_fd(MISSING_PROPERTIES_ERR, STDERR_FILENO));
 }

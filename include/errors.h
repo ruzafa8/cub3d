@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:31 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 18:19:02 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 20:03:22 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # define NOT_A_PROPERTY_ERR "ERROR\nTrying to read an invalid property"
 # define REPEATED_IDENTIFIER_ERR "ERROR\nProperties duplicated"
 # define IDENTIFIER_ERROR_ERR "ERROR\nFile contens unknown properties"
-# define EXPECTED_MAP_ERR "ERROR\nExpected a map at file"
 # define MISSING_PROPERTIES_ERR "ERROR\nMissing property at file"
 
 typedef enum e_error
@@ -49,7 +48,6 @@ typedef enum e_error
 	BORDER_ERROR,
 	NOT_A_PROPERTY,
 	REPEATED_IDENTIFIER,
-	EXPECTED_MAP,
 	MISSING_PROPERTIES,
 }	t_error;
 

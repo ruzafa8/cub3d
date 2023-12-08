@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:16:23 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 19:09:39 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 20:28:28 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,17 @@ static char	*skip_empty_lines(int fd)
 	return (line);
 }
 
+static int	is_empty(char *c)
+{
+	while (*c)
+	{
+		if (!spaces_isspace(*c))
+			return (0);
+		c++;
+	}
+	return (1);
+}
+
 /**
  * Parses the map from the file.
  * 
@@ -94,15 +105,22 @@ t_error	parse_read_map_fd(int fd, t_list **map)
 	char	*line;
 	char	*aux;
 
+	*map = 0;
 	line = skip_empty_lines(fd);
 	aux = str_remove_last_breakdown(line);
-	*map = 0;
 	if (!validate_line_is_map(aux))
-		return (free(aux), free(line), EXPECTED_MAP);
+		return (free(aux), free(line), UNKNOWN_CHARACTER_MAP);
 	free(aux);
-	while (line)
+	while (line && *line != '\n')
 	{
 		ft_lstadd_back(map, ft_lstnew(str_remove_last_breakdown(line)));
+		free(line);
+		line = ft_get_next_line(fd);
+	}
+	while (line)
+	{
+		if (!is_empty(line))
+			return (free(line), UNKNOWN_CHARACTER_MAP);
 		free(line);
 		line = ft_get_next_line(fd);
 	}

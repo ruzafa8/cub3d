@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 17:21:06 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/08 20:26:35 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ char	*str_remove_last_breakdown(char *str);
 size_t	spaces_find_next(char *str);
 size_t	spaces_skip_from_index(char *str, size_t index);
 char	*spaces_trim(char *str);
+int		spaces_isspace(char c);
 
 /*** RENDER ***/
 void	init_sprite(t_data *data);
