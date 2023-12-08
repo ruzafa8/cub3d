@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:07:12 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 16:55:11 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 19:08:20 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ static t_player	*init_player(int x, int y, char facing)
 	player = (t_player *) ft_calloc(1, sizeof(t_player));
 	if (!player)
 		return ((t_player *) 0);
-	player->pos_x = x;
-	player->pos_y = y;
+	player->pos_x = (double) x + 0.5;
+	player->pos_y = (double) y + 0.5;
 	set_facing(player, facing);
 	return (player);
 }
