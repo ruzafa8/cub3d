@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:48:25 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/06 17:14:28 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:49:49 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	validator_print_errors(t_error error);
 t_error	validate_colors(char *rgb, int *number);
 int		validate_is_map(t_list *map);
 int		validate_line_is_map(char *line);
-t_error	validate_player(t_list *map, t_cub3d *cub3d);
 int		validate_border(t_map **map, size_t max_x, size_t max_y);
 
 /*** PARSING FUNCTIONS ***/
@@ -99,6 +98,7 @@ t_error	parser_map(int fd, t_cub3d *cub3d);
 t_error	parse_property(char *line, t_cub3d *cub3d);
 t_error	parseable_property(char *line, char **identifier, char **value);
 t_error	parse_read_map_fd(int fd, t_list **map);
+t_error	parse_player(t_list *map, t_cub3d *cub3d);
 
 /*** STRING UTILS ***/
 char	*str_padd_spaces(char *str, size_t len);
