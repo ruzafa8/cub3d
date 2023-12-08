@@ -6,7 +6,7 @@
 /*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:32 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/06 17:07:15 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:25:41 by atrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ void	render_frame(t_data *data)
 		set_raycast(data, x);
 		exec_dda(data, data->raycast);
 		cal_heights(data->raycast);
-		//textures_calculation(data, data->ray, data->player, x);
+		ft_printf("heights\n");
+		cal_texture(data, data->raycast, data->cub3d->player, x);
+		ft_printf("texture\n");
 	}
 }
