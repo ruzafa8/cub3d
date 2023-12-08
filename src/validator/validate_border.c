@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:49:54 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 13:26:14 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/08 19:44:16 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	validate_border(t_map **map, size_t max_x, size_t max_y)
 		j = 0;
 		while (j < max_y)
 		{
+			if ((j == 0 || j == max_y - 1) && map[i][j] == FLOOR)
+				return (0);
 			if (map[i][j] == FLOOR && any_neightbour_void(map, i, j, max_y))
 				return (0);
 			j++;
