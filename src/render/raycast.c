@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:32 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/08 18:06:49 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:19:36 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	exec_dda(t_data *data, t_raycast *raycast)
 				raycast->map_y--;
 			raycast->side = HIT_Y;
 		}
-		if (data->cub3d->map[raycast->map_y][raycast->map_x] == WALL)
+		if (data->cub3d->map[raycast->map_x][raycast->map_y] == WALL)
 			return ;
 	}
 }
