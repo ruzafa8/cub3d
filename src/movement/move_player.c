@@ -6,7 +6,7 @@
 /*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:16:25 by atrujill          #+#    #+#             */
-/*   Updated: 2023/12/08 17:33:09 by aruzafa-         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:33:11 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	move_forward(t_data *data)
 	update_pos(data, x, y);
 }
 
-static void	move_left(t_data *data)
+static void	move_right(t_data *data)
 {
 	double	x;
 	double	y;
@@ -42,7 +42,7 @@ static void	move_backward(t_data *data)
 	update_pos(data, x, y);
 }
 
-static void	move_right(t_data *data)
+static void	move_left(t_data *data)
 {
 	double	x;
 	double	y;
@@ -71,8 +71,8 @@ void	move_player(void *game_data)
 		move_right(data);
 	else if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT)
 		|| mlx_is_key_down(data->mlx, MLX_KEY_Q))
-		rotate_player(data, -1);
+		rotate_player(data, 1);
 	else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT)
 		|| mlx_is_key_down(data->mlx, MLX_KEY_E))
-		rotate_player(data, 1);
+		rotate_player(data, -1);
 }

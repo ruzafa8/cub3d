@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atrujill <atrujill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aruzafa- <aruzafa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:07:12 by aruzafa-          #+#    #+#             */
-/*   Updated: 2023/12/08 19:08:20 by atrujill         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:33:51 by aruzafa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@ static void	set_facing(t_player *player, char facing)
 {
 	if (facing == 'N')
 	{
-		player->dir_y = -1;
-		player->plane_x = 0.66;
+		player->dir_x = -1;
+		player->plane_y = 0.66;
 	}
 	else if (facing == 'S')
 	{
-		player->dir_y = 1;
-		player->plane_x = -0.66;
+		player->dir_x = 1;
+		player->plane_y = -0.66;
 	}
 	else if (facing == 'E')
 	{
-		player->dir_x = 1;
-		player->plane_y = 0.66;
+		player->dir_y = 1;
+		player->plane_x = 0.66;
 	}
 	else if (facing == 'W')
 	{
-		player->dir_x = -1;
-		player->plane_y = -0.66;
+		player->dir_y = -1;
+		player->plane_x = -0.66;
 	}
 }
 
