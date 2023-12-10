@@ -87,7 +87,7 @@ fclean: clean
 	@$(MAKE) -C $(LIBFT) fclean
 
 .PHONY: re
-re: clean all
+re: fclean all
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
