@@ -55,7 +55,8 @@ CYAN     = \033[0;36m
 RESET    = \033[0m
 
 .PHONY: all
-all: libmlx libft $(BINDIR)/$(TARGET) title
+
+all: lib/MLX42/libmlx42.a lib/libft/libft.a $(BINDIR)/$(TARGET) title
 
 $(BINDIR)/$(TARGET): $(OBJECTS) | $(BINDIR)
 	@$(CC) -g $(OBJECTS) $(LIBS) $(HEADERS) -o $@
@@ -70,15 +71,13 @@ $(OBJDIR)/%.o : $(SRCDIR)/%.c
 clean:
 	@$(RM) $(OBJECTS)
 	@$(MAKE) -C $(LIBMLX) clean
-	@$(MAKE) -C $(LIBFT)
+	@$(MAKE) -C $(LIBFT) clean
 	@echo "Cleanup complete!"
 
-.PHONY: libmlx
-libmlx:
+lib/MLX42/libmlx42.a:
 	@$(MAKE) -C $(LIBMLX)
 
-.PHONY: libft
-libft:
+lib/libft/libft.a:
 	@$(MAKE) -C $(LIBFT)
 
 .PHONY: fclean
